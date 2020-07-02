@@ -3,11 +3,5 @@
   "workspaces": [
     "shared/*",
     "apps/*"
-  ],
-  "peerDependencies": {
-    "@types/react-redux": "*",
-    "@types/redux": "*",
-    "react-redux": "*",
-    "redux": "*"
-  }
+  ]
 }

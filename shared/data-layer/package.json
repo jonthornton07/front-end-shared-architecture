@@ -1,5 +1,11 @@
 {
   "name": "data-layer",
   "version": "1.0.0",
-  "private": true
+  "private": true,
+  "peerDependencies": {
+    "@types/react-redux": "*",
+    "@types/redux": "*",
+    "react-redux": "*",
+    "redux": "*"
+  }
 }
