@@ -1,5 +1,5 @@
 import React from "react";
-import { AppState } from "../store";
+import { AppState } from "data-layer/src/store";
 import { connect } from "react-redux";
 
 const mapStateToProps = (state: AppState) => ({
