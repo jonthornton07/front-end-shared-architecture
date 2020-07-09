@@ -1,6 +1,6 @@
 import React from "react";
-import { AppState } from "data-layer/src/store";
 import { connect } from "react-redux";
+import { AppState } from "shared-data-layer/dist/index";
 
 const mapStateToProps = (state: AppState) => ({
   runs: state.run.runs,

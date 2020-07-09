@@ -1,7 +1,3 @@
 {
-  "private": true,
-  "workspaces": [
-    "shared/*",
-    "apps/*"
-  ]
+  "private": true
 }
