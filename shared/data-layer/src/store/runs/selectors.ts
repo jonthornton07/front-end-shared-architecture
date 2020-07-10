@@ -1,6 +1,6 @@
 import { createSelector } from "reselect";
 import { AppState } from "..";
-import { Run } from "shared-api-layer/src/models";
+import { Run } from "shared-api-models/src/models";
 
 const getRuns = (state: AppState) => state.run.runs;
 const getSelectedRunId = (state: AppState) => state.run.selectedRunId;

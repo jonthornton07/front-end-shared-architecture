@@ -1,5 +1,5 @@
 import React from "react";
-import { Run } from "shared-api-layer/src/models";
+import { Run } from "shared-api-models/src/models";
 import { Item, Button, Segment } from "semantic-ui-react";
 import moment from "moment";
 

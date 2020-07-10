@@ -1,4 +1,4 @@
-import { Run } from "shared-api-layer/src/models";
+import { Run } from "shared-api-models/src/models";
 
 export interface RunState {
   runs: Run[];

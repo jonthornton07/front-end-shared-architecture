@@ -12,6 +12,7 @@
     "semantic-ui-react": "^0.88.2",
     "shared-data-layer": "1.0.0",
     "shared-api-layer": "1.0.0",
+    "shared-api-models": "1.0.0",
     "typescript": "~3.7.2"
   },
   "devDependencies": {

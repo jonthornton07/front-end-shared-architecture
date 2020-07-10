@@ -1,5 +1,5 @@
 import { ADD_RUN, EDIT_RUN, REMOVE_RUN, SELECT_RUN } from "./types";
-import { Run } from "shared-api-layer/src/models";
+import { Run } from "shared-api-models/src/models";
 
 export const setSelectedRun = (id: number) => {
   return {
