@@ -8,6 +8,11 @@
   "scripts": {
     "build": "tsc"
   },
-  "dependencies": {},
-  "devDependencies": {}
+  "dependencies": {
+    "axios": "^0.19.2"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "typescript": "^3.9.6"
+  }
 }
