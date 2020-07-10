@@ -1,4 +1,4 @@
-import { RunState, RunActions, ADD_RUN, REMOVE_RUN } from "./types";
+import { RunState, RunActions, ADD_RUN, REMOVE_RUN, SELECT_RUN } from "./types";
 
 const initialState: RunState = {
   runs: [
@@ -11,6 +11,7 @@ const initialState: RunState = {
       name: "Run",
     },
   ],
+  selectedRunId: undefined,
 };
 
 export const runReducer = (
@@ -24,11 +25,18 @@ export const runReducer = (
         id: state.runs.length + 1,
       };
       return {
+        ...state,
         runs: [...state.runs, newRun],
       };
     case REMOVE_RUN:
       return {
+        ...state,
         runs: state.runs.filter((run) => run.id !== action.id),
+      };
+    case SELECT_RUN:
+      return {
+        ...state,
+        selectedRunId: action.id,
       };
     //TODO: Hand EDIT_RUN
     default:

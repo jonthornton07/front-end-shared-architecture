@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import RunList from "./RunList";
+import RunDetailsForm from "../details/RunDetailsForm";
 
 const RunDashboard = () => {
   //TODO: Handle loading
@@ -10,7 +11,7 @@ const RunDashboard = () => {
         <RunList />
       </Grid.Column>
       <Grid.Column width={6}>
-        <h1>Something here</h1>
+        <RunDetailsForm />
       </Grid.Column>
     </Grid>
   );

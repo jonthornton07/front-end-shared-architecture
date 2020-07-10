@@ -1,19 +1,14 @@
-export interface Run {
-  id: number;
-  paceInMS: number;
-  distance: number;
-  timeInMS: number;
-  date: string;
-  name: string;
-}
+import { Run } from "shared-api-layer/src/models";
 
 export interface RunState {
   runs: Run[];
+  selectedRunId: number | undefined;
 }
 
 export const ADD_RUN = "ADD_RUN";
 export const EDIT_RUN = "EDIT_RUN";
 export const REMOVE_RUN = "REMOVE_RUN";
+export const SELECT_RUN = "SELECT_RUN";
 
 interface AddRunAction {
   type: typeof ADD_RUN;
@@ -30,4 +25,13 @@ interface RemoveRunAction {
   id: number;
 }
 
-export type RunActions = AddRunAction | EditRunAction | RemoveRunAction;
+interface SelectRunAction {
+  type: typeof SELECT_RUN;
+  id: number;
+}
+
+export type RunActions =
+  | AddRunAction
+  | EditRunAction
+  | RemoveRunAction
+  | SelectRunAction;

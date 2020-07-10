@@ -1,4 +1,12 @@
-import { Run, ADD_RUN, EDIT_RUN, REMOVE_RUN } from "./types";
+import { ADD_RUN, EDIT_RUN, REMOVE_RUN, SELECT_RUN } from "./types";
+import { Run } from "shared-api-layer/src/models";
+
+export const setSelectedRun = (id: number) => {
+  return {
+    type: SELECT_RUN,
+    id,
+  };
+};
 
 export const addRun = (run: Run) => {
   return {

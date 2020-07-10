@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Container,
-  Segment,
-  Header,
-  Button,
-  Image,
-  Icon,
-} from "semantic-ui-react";
+import { Container, Segment, Header, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 
 const Home = () => {

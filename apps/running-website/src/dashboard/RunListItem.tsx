@@ -1,35 +1,31 @@
 import React from "react";
-import { Run } from "shared-data-layer/dist/runs/types";
-import { Item, Button, Segment, Icon } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Run } from "shared-api-layer/src/models";
+import { Item, Button, Segment } from "semantic-ui-react";
+import moment from "moment";
 
-const RunListItem: React.FC<{ run: Run }> = ({ run }) => {
+const RunListItem: React.FC<{ run: Run; onClick: () => void }> = ({
+  run,
+  onClick,
+}) => {
   return (
     <Segment.Group>
-      <Segment>
+      <Segment clearing>
         <Item.Group>
           <Item>
             <Item.Content>
               <Item.Header as="a">{run.name}</Item.Header>
-              <Item.Description>Ran on {run.date}</Item.Description>
+              <Item.Description>
+                Ran on {moment(run.date).format("MM/DD/YYYY")}
+              </Item.Description>
             </Item.Content>
+            <Button
+              onClick={onClick}
+              floated="right"
+              content="View"
+              color="blue"
+            />
           </Item>
         </Item.Group>
-      </Segment>
-      <Segment>
-        <Icon name="clock" /> {run.timeInMS}
-        <Icon name="marker" /> {run.distance}
-      </Segment>
-      <Segment secondary>Attendees will go here</Segment>
-      <Segment clearing>
-        <span>dfasdf</span>
-        <Button
-          //   as={Link}
-          //   to={`/runs/${run.id}`}
-          floated="right"
-          content="View"
-          color="blue"
-        />
       </Segment>
     </Segment.Group>
   );

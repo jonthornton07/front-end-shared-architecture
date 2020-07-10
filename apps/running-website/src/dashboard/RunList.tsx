@@ -1,23 +1,33 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
+import { Dispatch } from "redux";
 import { AppState } from "shared-data-layer/dist/index";
-import { Item } from "semantic-ui-react";
+import { setSelectedRun } from "shared-data-layer/dist/runs/actions";
 import RunListItem from "./RunListItem";
 
 const mapStateToProps = (state: AppState) => ({
   runs: state.run.runs,
 });
 
-type Props = ReturnType<typeof mapStateToProps>;
+const mapDispatchToProps = (dispatch: Dispatch) => ({
+  handleClick: (id: number) => dispatch(setSelectedRun(id)),
+});
 
-const RunList = ({ runs }: Props) => {
+type Props = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
+
+const RunList = ({ runs, handleClick }: Props) => {
   return (
     <Fragment>
       {runs.map((run) => (
-        <RunListItem key={run.id} run={run} />
+        <RunListItem
+          key={run.id}
+          run={run}
+          onClick={() => handleClick(run.id)}
+        />
       ))}
     </Fragment>
   );
 };
 
-export default connect(mapStateToProps)(RunList);
+export default connect(mapStateToProps, mapDispatchToProps)(RunList);
