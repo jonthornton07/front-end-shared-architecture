@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {connect} from 'react-redux';
-import {Dispatch} from 'redux';
+import {connect, ResolveThunks} from 'react-redux';
 import {AppState} from 'shared-data-layer/dist/index';
 import {setSelectedRun} from 'shared-data-layer/dist/runs/actions';
+import {getRunsAsync} from 'shared-data-layer/dist/runs/thunks/getRunsAsync';
 import RunListItem from './RunListItem';
 import {useNavigation} from '@react-navigation/native';
 
@@ -11,18 +11,24 @@ const mapStateToProps = (state: AppState) => ({
   runs: state.run.runs,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  handleStateClick: (id: number) => dispatch(setSelectedRun(id)),
-});
+const mapDispatchToProps = {
+  getRunsAsync,
+  setSelectedRun,
+};
 
-type Props = ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatchToProps>;
+type ScreenProps = ReturnType<typeof mapStateToProps> &
+  ResolveThunks<typeof mapDispatchToProps>;
 
-const RunList = ({runs, handleStateClick}: Props) => {
+const RunList = ({runs, getRunsAsync, setSelectedRun}: ScreenProps) => {
   const navigation = useNavigation();
 
+  useEffect(() => {
+    getRunsAsync();
+  }, [getRunsAsync]);
+
   const handleListItemClick = (id: number) => {
-    handleStateClick(id);
+    console.log(id);
+    setSelectedRun(id);
     navigation.navigate('RunDetailsForm');
   };
 
@@ -30,9 +36,9 @@ const RunList = ({runs, handleStateClick}: Props) => {
     <FlatList
       style={{backgroundColor: '#fff', flex: 1}}
       data={runs}
+      keyExtractor={(run, index) => `${run.id}`}
       renderItem={(run) => (
         <RunListItem
-          key={run.item.id}
           run={run.item}
           onClick={() => handleListItemClick(run.item.id)}
         />

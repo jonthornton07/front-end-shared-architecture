@@ -35,7 +35,7 @@ const RunDetailsForm = ({selectedRun}: Props) => {
   }
 
   return (
-    <View style={{padding: 20}}>
+    <View style={{backgroundColor: '#fff', flex: 1, padding: 20}}>
       <Input
         placeholder="Name"
         value={selectedRun.name}

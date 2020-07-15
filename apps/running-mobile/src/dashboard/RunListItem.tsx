@@ -9,7 +9,7 @@ const RunListItem: React.FC<{run: Run; onClick: () => void}> = ({
 }) => {
   return (
     <ListItem
-      key={run.id}
+      key={`${run.id}`}
       title={run.name}
       subtitle={`Ran on ${moment(run.date).format('MM/DD/YYYY')}`}
       onPress={onClick}
