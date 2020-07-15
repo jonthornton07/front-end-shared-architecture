@@ -1,16 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Segment, Header, Button, Icon } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { getRuns } from "shared-api-layer/dist/runs/getRuns";
 
 const Home = () => {
-  useEffect(() => {
-    const getRunsFunction = async () => {
-      getRuns();
-    };
-    getRunsFunction();
-  }, []);
-
   return (
     <Segment inverted textAlign="center" vertical className="masthead">
       <Container text>

@@ -1,16 +1,14 @@
-import { RunState, RunActions, ADD_RUN, REMOVE_RUN, SELECT_RUN } from "./types";
+import {
+  RunState,
+  RunActions,
+  ADD_RUN,
+  ADD_RUNS,
+  REMOVE_RUN,
+  SELECT_RUN,
+} from "./types";
 
 const initialState: RunState = {
-  runs: [
-    {
-      id: 0,
-      paceInMS: 100,
-      distance: 5.3,
-      timeInMS: 100,
-      date: Date(),
-      name: "Run",
-    },
-  ],
+  runs: [],
   selectedRunId: undefined,
 };
 
@@ -28,6 +26,12 @@ export const runReducer = (
         ...state,
         runs: [...state.runs, newRun],
       };
+    case ADD_RUNS: {
+      return {
+        ...state,
+        runs: action.runs,
+      };
+    }
     case REMOVE_RUN:
       return {
         ...state,

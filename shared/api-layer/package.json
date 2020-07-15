@@ -5,11 +5,14 @@
   "private": true,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "rootDir": "src",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "dependencies": {
-    "axios": "^0.19.2"
+    "axios": "^0.19.2",
+    "shared-api-models": "1.0.0"
   },
   "devDependencies": {
     "@types/axios": "^0.14.0",

@@ -6,3 +6,7 @@ export interface Run {
   date: string;
   name: string;
 }
+
+export interface GetRunsResponse {
+  runs: Run[];
+}

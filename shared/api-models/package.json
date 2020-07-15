@@ -5,8 +5,10 @@
   "private": true,
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "rootDir": "src",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "dependencies": {},
   "devDependencies": {

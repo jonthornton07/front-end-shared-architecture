@@ -6,6 +6,7 @@ export interface RunState {
 }
 
 export const ADD_RUN = "ADD_RUN";
+export const ADD_RUNS = "ADD_RUNS";
 export const EDIT_RUN = "EDIT_RUN";
 export const REMOVE_RUN = "REMOVE_RUN";
 export const SELECT_RUN = "SELECT_RUN";
@@ -13,6 +14,11 @@ export const SELECT_RUN = "SELECT_RUN";
 interface AddRunAction {
   type: typeof ADD_RUN;
   run: Run;
+}
+
+interface AddRunsAction {
+  type: typeof ADD_RUNS;
+  runs: Run[];
 }
 
 interface EditRunAction {
@@ -32,6 +38,7 @@ interface SelectRunAction {
 
 export type RunActions =
   | AddRunAction
+  | AddRunsAction
   | EditRunAction
   | RemoveRunAction
   | SelectRunAction;

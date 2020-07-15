@@ -1,9 +1,10 @@
 import { runReducer } from "./runs/reducer";
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware } from "redux";
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   run: runReducer,
 });
 
-export const store = createStore(rootReducer);
-export type AppState = ReturnType<typeof rootReducer>;
+export const store = createStore(rootReducer, applyMiddleware(thunk));
+export type AppState = ReturnType<typeof store.getState>;

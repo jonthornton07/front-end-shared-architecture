@@ -1,29 +1,36 @@
-import React, { Fragment } from "react";
-import { connect } from "react-redux";
-import { Dispatch } from "redux";
+import React, { Fragment, useEffect } from "react";
+import { connect, ResolveThunks } from "react-redux";
 import { AppState } from "shared-data-layer/dist/index";
 import { setSelectedRun } from "shared-data-layer/dist/runs/actions";
+import { getRunsAsync } from "shared-data-layer/dist/runs/thunks/getRunsAsync";
 import RunListItem from "./RunListItem";
 
 const mapStateToProps = (state: AppState) => ({
   runs: state.run.runs,
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-  handleClick: (id: number) => dispatch(setSelectedRun(id)),
-});
+const mapDispatchToProps = {
+  getRunsAsync,
+  setSelectedRun,
+};
 
-type Props = ReturnType<typeof mapStateToProps> &
-  ReturnType<typeof mapDispatchToProps>;
+type ScreenProps = ReturnType<typeof mapStateToProps> &
+  ResolveThunks<typeof mapDispatchToProps>;
 
-const RunList = ({ runs, handleClick }: Props) => {
+const RunList = ({ runs, getRunsAsync, setSelectedRun }: ScreenProps) => {
+  useEffect(() => {
+    getRunsAsync();
+  }, [getRunsAsync]);
+
   return (
     <Fragment>
       {runs.map((run) => (
         <RunListItem
           key={run.id}
           run={run}
-          onClick={() => handleClick(run.id)}
+          onClick={() => {
+            setSelectedRun(run.id);
+          }}
         />
       ))}
     </Fragment>
