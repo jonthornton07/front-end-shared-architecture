@@ -6,6 +6,6 @@
     "start": "export ELECTRON_START_URL=http://localhost:3000 && electron ."
   },
   "dependencies": {
-    "electron": "^9.0.5"
+    "electron": "^9.3.0"
   }
 }
